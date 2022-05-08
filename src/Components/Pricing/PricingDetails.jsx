@@ -43,9 +43,12 @@ const PricingDetails = () => {
     },
   ];
   return (
-    <div className="w-full flex md:flex-row flex-col justify-between">
+    <div className="w-full mb-100 flex lg:flex-row flex-col justify-between">
       {pricing.map((price) => (
-        <div className="price.title py-40 px-80 bg-white rounded-2xl md:my-0 my-20">
+        <div
+          key={price.title}
+          className="price.title mt-60 lg:mt-0 py-40 px-80 bg-white rounded-2xl md:my-0 my-20"
+        >
           <h1 className="text-header leading-textLH text-primary font-bold text-center py-30">
             {price.title}
           </h1>

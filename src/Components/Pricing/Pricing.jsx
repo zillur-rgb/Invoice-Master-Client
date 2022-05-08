@@ -3,7 +3,7 @@ import PricingDetails from "./PricingDetails";
 
 const Pricing = () => {
   return (
-    <div className="w-5/6 mx-auto py-115">
+    <div className="w-5/6 mx-auto my-100 py-50">
       <div className="flex flex-col md:flex-row items-center justify-between py-60">
         <h1 className="text-title leading-titleLH font-bold text-primary w-full md:w-2/4">
           Invoicing and Tracking Payment is No Longer Cumbersome
