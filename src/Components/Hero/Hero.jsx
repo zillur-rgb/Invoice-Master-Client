@@ -1,0 +1,30 @@
+import header from "../../Assets/header.jpeg";
+import scr1 from "../../Assets/scr1.jpeg";
+import scr2 from "../../Assets/scr2.jpeg";
+import scr3 from "../../Assets/scr3.jpeg";
+
+const Hero = () => {
+  return (
+    <div className="w-full md:w-5/6 mx-auto flex lg:flex-row flex-col items-center justify-between my-60">
+      <div className="text w-full lg:w-2/4">
+        <h1 className="text-titleXL font-bold leading-headerLH text-primary my-20">
+          Make Your Invoice in Easy Steps Using Our App
+        </h1>
+        <p className=" font-openSans text-text text-normal leading-textLH my-20">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis,
+          voluptatem cupiditate. Facere ipsa eaque laborum tenetur soluta
+          officia totam voluptate! Laudantium nesciunt ullam nulla voluptatum
+          impedit voluptates eaque possimus veritatis?
+        </p>
+        <button className="px-30 py-15 bg-primary text-white font-semibold rounded-full hover:bg-text">
+          Get Started
+        </button>
+      </div>
+      <div className="image w-full my-20 lg:my-0 lg:w-2/5 relative">
+        <img src={header} alt="header" />
+      </div>
+    </div>
+  );
+};
+
+export default Hero;

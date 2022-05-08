@@ -20,9 +20,9 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="flex items-center justify-between my-15 relative">
+    <div className="w-full md:w-5/6 mx-auto flex items-center justify-between my-15 relative">
       <Link to="/">
-        <h1 className="text-textHeader sm:text-title font-bold text-primary">
+        <h1 className="text-textHeader lg:text-title font-bold text-primary">
           Invoice Master
         </h1>
       </Link>
@@ -41,7 +41,7 @@ const Navbar = () => {
         ))}
       </nav>
 
-      <button className="hidden md:flex text-normal px-30 py-15 border-2 border-primary hover:text-white text-primary bg-none hover:bg-primary rounded-full">
+      <button className=" whitespace-nowrap hidden md:flex text-normal px-30 py-15 border-2 border-primary hover:text-white text-primary bg-none hover:bg-primary rounded-full">
         Get Started
       </button>
 
