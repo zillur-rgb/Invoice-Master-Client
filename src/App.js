@@ -3,7 +3,7 @@ import AllPages from "./Pages/AllPages";
 
 function App() {
   return (
-    <div className=" container mx-auto w-screen ">
+    <div>
       <Navbar />
       <AllPages />
     </div>

@@ -10,6 +10,7 @@ module.exports = {
         red: "#EF233C",
         yellow: "#FA983A",
         bg: "#F7F7F7",
+        black: "#999",
       },
       fontSize: {
         title: "32px",

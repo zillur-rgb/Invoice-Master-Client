@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Homepage from "./Homepage";
 import Features from "./Features";
 import Testimonials from "./Testimonials";
-import Pricing from "./Pricing";
+import PricingPage from "./PricingPage";
 
 const AllPages = () => {
   return (
@@ -11,7 +11,7 @@ const AllPages = () => {
       <Route path="/" element={<Homepage />} />
       <Route path="/features" element={<Features />} />
       <Route path="/testimonials" element={<Testimonials />} />
-      <Route path="/pricing" element={<Pricing />} />
+      <Route path="/pricing" element={<PricingPage />} />
     </Routes>
   );
 };
