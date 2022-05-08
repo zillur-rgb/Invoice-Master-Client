@@ -5,7 +5,7 @@ import scr3 from "../../Assets/scr3.jpeg";
 
 const Hero = () => {
   return (
-    <div className="w-full md:w-5/6 mx-auto flex lg:flex-row flex-col items-center justify-between my-60 ">
+    <div className="w-full md:w-5/6 mx-auto flex lg:flex-row flex-col items-center justify-between my-55 ">
       <div className="text w-full lg:w-2/4">
         <h1 className="text-titleXL font-bold leading-headerLH text-primary my-20">
           Make Your Invoice in Easy Steps Using Our App
