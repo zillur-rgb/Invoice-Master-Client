@@ -20,6 +20,7 @@ module.exports = {
       },
       lineHeight: {
         headerLH: "64px",
+        titleLH: "48px",
         textLH: "28px",
       },
 
@@ -46,7 +47,7 @@ module.exports = {
         105: "105x",
         110: "110x",
         115: "115x",
-        120: "120x",
+        125: "125x",
       },
     },
   },
