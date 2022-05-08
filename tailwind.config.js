@@ -9,6 +9,7 @@ module.exports = {
         deepGreen: "#232922",
         red: "#EF233C",
         yellow: "#FA983A",
+        bg: "#F7F7F7",
       },
       fontSize: {
         title: "32px",
