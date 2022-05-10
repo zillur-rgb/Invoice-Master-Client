@@ -4,7 +4,7 @@ import { BiBadgeCheck } from "react-icons/bi";
 
 const Service = () => {
   return (
-    <div className="w-5/6 mx-auto ">
+    <div className="w-5/6 mx-auto">
       <div className="serviceHeader flex flex-col md:flex-row items-center justify-between py-60">
         <h1 className="text-title leading-titleLH font-bold text-primary w-full md:w-2/4">
           Invoicing and Tracking Payment is No Longer Cumbersome
@@ -15,7 +15,7 @@ const Service = () => {
         </p>
       </div>
 
-      <div className="services flex md:flex-row flex-col gap-12">
+      <div className="services flex md:flex-row flex-col gap-12 my-20">
         <div className="service-1">
           <div className="w-70 h-70 bg-lightGreen rounded-full flex items-center justify-center">
             <AiOutlinePullRequest className="text-title text-primary" />

@@ -3,8 +3,10 @@ import { BsFacebook } from "react-icons/bs";
 import { TiSocialInstagramCircular } from "react-icons/ti";
 import { AiFillTwitterCircle } from "react-icons/ai";
 import { FaTiktok } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
+  const navigate = useNavigate();
   const footerArary = [
     {
       title: "General",
@@ -31,7 +33,10 @@ const Footer = () => {
                 Get Help <FiArrowUpRight />
               </button>
 
-              <button className=" whitespace-nowrap flex text-normal px-15 py-10 border-2 bg-text border-deepGreen text-deepGreen hover:text-white bg-none hover:bg-primary rounded-full">
+              <button
+                onClick={() => navigate("/signin")}
+                className=" whitespace-nowrap flex text-normal px-15 py-10 border-2 bg-text border-deepGreen text-deepGreen hover:text-white bg-none hover:bg-primary rounded-full"
+              >
                 Get Started
               </button>
             </div>
@@ -40,10 +45,8 @@ const Footer = () => {
           <div>
             <div className="flex flex-col md:flex-row py-30">
               {footerArary.map((footer) => (
-                <div className="w-1/4">
-                  <h1 key={footer.title} className="text-lightGreen font-bold">
-                    {footer.title}
-                  </h1>
+                <div className="w-1/4" key={footer.title}>
+                  <h1 className="text-lightGreen font-bold">{footer.title}</h1>
                   <ul className="flex flex-col">
                     {footer.options.map((option, idx) => (
                       <li key={idx} className="text-lightGreen my-2">

@@ -1,9 +1,10 @@
 import React from "react";
+import Service from "../Components/Service/Service";
 
 const Features = () => {
   return (
-    <div>
-      <h1>Hello this is feature page</h1>
+    <div className="container w-screen mx-auto ">
+      <Service />
     </div>
   );
 };

@@ -4,6 +4,7 @@ import Homepage from "./Homepage";
 import Features from "./Features";
 import Testimonials from "./Testimonials";
 import PricingPage from "./PricingPage";
+import Authentication from "./Authentication";
 
 const AllPages = () => {
   return (
@@ -12,6 +13,7 @@ const AllPages = () => {
       <Route path="/features" element={<Features />} />
       <Route path="/testimonials" element={<Testimonials />} />
       <Route path="/pricing" element={<PricingPage />} />
+      <Route path="/signin" element={<Authentication />} />
     </Routes>
   );
 };

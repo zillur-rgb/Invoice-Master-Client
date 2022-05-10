@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { HiOutlineMenu } from "react-icons/hi";
 
 const Navbar = () => {
   const [showNavbar, setShowNavbar] = useState(false);
+  const navigate = useNavigate();
   const navmenu = [
     {
       title: "Features",
@@ -42,7 +43,10 @@ const Navbar = () => {
           ))}
         </nav>
 
-        <button className=" whitespace-nowrap hidden md:flex text-normal px-30 py-15 border-2 border-primary hover:text-white text-primary bg-none hover:bg-primary rounded-full">
+        <button
+          onClick={() => navigate("/signin")}
+          className=" active:translate-y-1 active:duration-100 active:transition-all  whitespace-nowrap hidden md:flex text-normal px-30 py-15 border-2 border-primary hover:text-white text-primary bg-none hover:bg-primary rounded-full"
+        >
           Get Started
         </button>
 

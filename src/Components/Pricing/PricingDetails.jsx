@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const PricingDetails = () => {
+  const navigate = useNavigate();
   const pricing = [
     {
       title: "Personal",
@@ -76,7 +78,10 @@ const PricingDetails = () => {
               <span className=" text-normal text-primary">/ mo</span>
             </p>
           </div>
-          <button className=" whitespace-nowrap flex text-normal px-30 py-10 border-2 border-primary hover:text-white text-primary bg-none hover:bg-primary rounded-full mx-auto">
+          <button
+            onClick={() => navigate("/signin")}
+            className=" whitespace-nowrap flex text-normal px-30 py-10 border-2 border-primary hover:text-white text-primary bg-none hover:bg-primary rounded-full mx-auto"
+          >
             Get Started
           </button>
         </div>

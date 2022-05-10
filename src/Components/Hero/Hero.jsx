@@ -1,9 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import header from "../../Assets/header.jpeg";
 import scr1 from "../../Assets/scr1.jpeg";
 import scr2 from "../../Assets/scr2.jpeg";
 import scr3 from "../../Assets/scr3.jpeg";
 
 const Hero = () => {
+  const navigate = useNavigate();
   return (
     <div className="w-full md:w-5/6 mx-auto flex lg:flex-row flex-col items-center justify-between my-55 ">
       <div className="text w-full lg:w-2/4">
@@ -16,7 +18,10 @@ const Hero = () => {
           officia totam voluptate! Laudantium nesciunt ullam nulla voluptatum
           impedit voluptates eaque possimus veritatis?
         </p>
-        <button className="px-30 py-15 bg-primary text-white font-semibold rounded-full hover:bg-text">
+        <button
+          onClick={() => navigate("/signin")}
+          className="px-30 py-15 bg-primary text-white font-semibold rounded-full hover:bg-text"
+        >
           Get Started
         </button>
       </div>
