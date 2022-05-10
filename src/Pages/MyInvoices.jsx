@@ -31,18 +31,22 @@ const MyInvoices = () => {
         </div>
 
         <table className="w-full">
-          <tr>
-            <th className="py-15">Id</th>
-            <th className="py-15">Due Date</th>
-            <th className="py-15">Client Name</th>
-            <th className="py-15">Client Email</th>
-            <th className="py-15">Total Amount</th>
-            <th className="py-15">Status</th>
-          </tr>
+          <thead>
+            <tr>
+              <th className="py-15">Id</th>
+              <th className="py-15">Due Date</th>
+              <th className="py-15">Client Name</th>
+              <th className="py-15">Client Email</th>
+              <th className="py-15">Total Amount</th>
+              <th className="py-15">Status</th>
+            </tr>
+          </thead>
 
-          {invoices.map((invoice) => (
-            <Invoices invoice={invoice} key={invoice.id} />
-          ))}
+          <tbody>
+            {invoices.map((invoice) => (
+              <Invoices invoice={invoice} key={invoice.id} />
+            ))}
+          </tbody>
         </table>
       </div>
     </div>

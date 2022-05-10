@@ -1,7 +1,7 @@
 import details from "../../Assets/details.jpeg";
 import list from "../../Assets/list.jpeg";
 
-const Details = () => {
+const ServiceDetails = () => {
   return (
     <div className="w-5/6 mx-auto my-100">
       <div className="flex flex-col lg:flex-row justify-between items-center pb-100">
@@ -56,4 +56,4 @@ const Details = () => {
   );
 };
 
-export default Details;
+export default ServiceDetails;

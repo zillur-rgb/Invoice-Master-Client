@@ -6,6 +6,7 @@ import Testimonials from "./Testimonials";
 import PricingPage from "./PricingPage";
 import Authentication from "./Authentication";
 import MyInvoices from "./MyInvoices";
+import Details from "./Details";
 
 const AllPages = () => {
   return (
@@ -16,6 +17,7 @@ const AllPages = () => {
       <Route path="/pricing" element={<PricingPage />} />
       <Route path="/signin" element={<Authentication />} />
       <Route path="/MyInvoices" element={<MyInvoices />} />
+      <Route path="/details/:id" element={<Details />} />
     </Routes>
   );
 };
