@@ -7,10 +7,14 @@ module.exports = {
         text: "#588157",
         lightGreen: "#E8F6DD",
         deepGreen: "#232922",
+        btnGreen: "#78E08F",
         red: "#EF233C",
+        redLight: "rgba(239, 35, 60, .2)",
         yellow: "#FA983A",
+        yellowLight: "rgba(250, 152, 58, .2)",
         bg: "#F7F7F7",
         black: "#999",
+        btn: "#B8E994",
       },
       fontSize: {
         title: "32px",
@@ -55,7 +59,7 @@ module.exports = {
 
   fontFamily: {
     montserrat: ["Montserrat", "sans-serif"],
-    openSans: ["Open Sans", "sans-serif"],
+    sans: ["Open Sans", "sans-serif"],
   },
   plugins: [],
 };
