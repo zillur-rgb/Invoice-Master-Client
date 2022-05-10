@@ -11,7 +11,7 @@ const SignUp = () => {
   };
   return (
     <form className="w-full" onSubmit={handleSubmit(handleOnSubmit)}>
-      <div className="flex justify-between items-center mt-15">
+      <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mt-15">
         <label className="w-1/5" htmlFor="firstName">
           FirstName
         </label>
@@ -21,7 +21,7 @@ const SignUp = () => {
           {...register("firstName")}
         />
       </div>
-      <div className="flex justify-between items-center mt-15">
+      <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mt-15">
         <label className="w-1/5" htmlFor="lastName">
           Lastname
         </label>
@@ -31,8 +31,8 @@ const SignUp = () => {
           {...register("lastName", { required: true })}
         />
       </div>
-      <div className="flex justify-between items-center mt-15">
-        <label className="w-1/5" htmlFor="email">
+      <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mt-15">
+        <label className="w-1/5 whitespace-nowrap" htmlFor="email">
           Email Address
         </label>
         <input
@@ -42,7 +42,7 @@ const SignUp = () => {
           {...register("email", { required: true })}
         />
       </div>
-      <div className="flex justify-between items-center mt-15">
+      <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mt-15">
         <label className="w-1/5" htmlFor="password">
           Password
         </label>
@@ -53,8 +53,8 @@ const SignUp = () => {
           {...register("password", { required: true })}
         />
       </div>
-      <div className="flex justify-between items-center mt-15">
-        <label className="w-1/5" htmlFor="secretWord">
+      <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mt-15">
+        <label className="w-1/5 whitespace-nowrap" htmlFor="secretWord">
           Secret Word
         </label>
         <input
