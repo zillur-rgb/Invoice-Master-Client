@@ -16,7 +16,9 @@ const InvoiceCard = ({ details }) => {
         </div>
         <p>
           Due Date:{" "}
-          <span className="font-bold text-red">{details.due.slice(0, 10)}</span>
+          <span className="font-bold text-red">
+            {details?.due?.slice(0, 10)}
+          </span>
         </p>
       </div>
 

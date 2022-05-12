@@ -4,12 +4,17 @@ import { BsApple } from "react-icons/bs";
 import {
   useSignInWithEmailAndPassword,
   useSignInWithGoogle,
+  useUpdatePassword,
 } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase.init";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const SignIn = () => {
+  const [resetEmail, setResetEmail] = useState("");
+  const [updatePassword, updating] = useUpdatePassword(auth);
+  const [forgotPass, setForgotPass] = useState(false);
   const navigate = useNavigate();
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
@@ -22,7 +27,7 @@ const SignIn = () => {
     errorMessage = error?.message || googleError?.message;
   }
 
-  if (loading || googleLoading) {
+  if (loading || googleLoading || updating) {
     toast("Loading... Please wait...");
   }
 
@@ -62,16 +67,51 @@ const SignIn = () => {
             {...register("password", { required: true })}
           />
         </div>
-        <div className=" w-full flex items-end justify-end mt-15">
+        <div className=" w-full flex items-center justify-between mt-15">
           <button
-            className=" border px-35 rounded-full py-15 outline-text text-md  cursor-pointer hover:bg-primary hover:text-lightGreen bg-text text-lightGreen"
+            className=" ml-28 border px-16 rounded-full py-15 outline-text text-md  cursor-pointer hover:bg-primary hover:text-lightGreen bg-text text-lightGreen"
             type="submit"
           >
             Sign In
           </button>
+          <p
+            className=" cursor-pointer hover:text-primary"
+            onClick={() => setForgotPass(!forgotPass)}
+          >
+            Forgot Password? Click here
+          </p>
         </div>
         <h1 className="text-red text-lg font-medium">{errorMessage}</h1>
       </form>
+      <div className={`text-center my-12 ${forgotPass ? "block" : "hidden"}`}>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="Write your email"
+          className="border px-5 py-10 outline-text text-md text-text"
+          value={resetEmail}
+          onChange={({ target }) => setResetEmail(target.value)}
+        />
+        <button
+          className=" border border-text text-text px-15 py-10 bg-none hover:bg-text hover:text-white"
+          onClick={() => {
+            updatePassword(resetEmail);
+            toast("Reset Password Sent", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+            setResetEmail("");
+          }}
+        >
+          Send Reset Email
+        </button>
+      </div>
       <div className="w-5/6 mx-auto flex flex-col sm:flex-row my-20">
         <button
           className="w-full sm:w-1/2 flex items-center justify-center p-15 border border-primary rounded-md hover:bg-primary hover:text-white mx-10"

@@ -4,6 +4,7 @@ import { HiOutlineMenu } from "react-icons/hi";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase.init";
 import { signOut } from "firebase/auth";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const [showNavbar, setShowNavbar] = useState(false);
@@ -55,6 +56,7 @@ const Navbar = () => {
               className="hover:text-red"
               onClick={() => {
                 signOut(auth);
+                toast("Signed Out Succesfully.");
               }}
             >
               Logout
