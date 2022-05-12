@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { HiOutlineMenu } from "react-icons/hi";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../firebase.init";
+import { signOut } from "firebase/auth";
 
 const Navbar = () => {
   const [showNavbar, setShowNavbar] = useState(false);
+  const [user] = useAuthState(auth);
+  console.log(user);
   const navigate = useNavigate();
   const navmenu = [
     {
@@ -43,12 +48,26 @@ const Navbar = () => {
           ))}
         </nav>
 
-        <button
-          onClick={() => navigate("/signin")}
-          className=" active:translate-y-1 active:duration-100 active:transition-all  whitespace-nowrap hidden md:flex text-normal px-30 py-15 border-2 border-primary hover:text-white text-primary bg-none hover:bg-primary rounded-full"
-        >
-          Get Started
-        </button>
+        {user ? (
+          <div>
+            <p>Hello {user?.displayName}</p>
+            <button
+              className="hover:text-red"
+              onClick={() => {
+                signOut(auth);
+              }}
+            >
+              Logout
+            </button>
+          </div>
+        ) : (
+          <button
+            onClick={() => navigate("/signin")}
+            className=" active:translate-y-1 active:duration-100 active:transition-all  whitespace-nowrap hidden md:flex text-normal px-30 py-15 border-2 border-primary hover:text-white text-primary bg-none hover:bg-primary rounded-full"
+          >
+            Get Started
+          </button>
+        )}
 
         <p
           className=" block md:hidden text-title cursor-pointer"
