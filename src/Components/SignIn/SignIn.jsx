@@ -8,7 +8,7 @@ import {
 } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase.init";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const SignIn = () => {
@@ -31,9 +31,11 @@ const SignIn = () => {
     toast("Loading... Please wait...");
   }
 
+  const location = useLocation();
+  let from = location?.state?.from?.pathname || "/";
   if (user || googleUser) {
-    toast("Loading... Please wait...");
-    navigate("/myinvoices");
+    toast("Signed In Succesfully");
+    navigate(from, { replace: true });
   }
 
   const { register, handleSubmit } = useForm();

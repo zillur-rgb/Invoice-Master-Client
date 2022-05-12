@@ -13,6 +13,10 @@ const Navbar = () => {
   const navigate = useNavigate();
   const navmenu = [
     {
+      title: "Home",
+      link: "/",
+    },
+    {
       title: "Features",
       link: "/features",
     },
@@ -21,8 +25,12 @@ const Navbar = () => {
       link: "/pricing",
     },
     {
-      title: "Testimonilas",
+      title: "Testimonials",
       link: "/testimonials",
+    },
+    {
+      title: "My Invoices",
+      link: "/myinvoices",
     },
   ];
 

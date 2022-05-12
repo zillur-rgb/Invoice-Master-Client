@@ -7,6 +7,7 @@ import PricingPage from "./PricingPage";
 import Authentication from "./Authentication";
 import MyInvoices from "./MyInvoices";
 import Details from "./Details";
+import RequireAuth from "../Components/RequireAuth/RequireAuth";
 
 const AllPages = () => {
   return (
@@ -16,7 +17,14 @@ const AllPages = () => {
       <Route path="/testimonials" element={<Testimonials />} />
       <Route path="/pricing" element={<PricingPage />} />
       <Route path="/signin" element={<Authentication />} />
-      <Route path="/MyInvoices" element={<MyInvoices />} />
+      <Route
+        path="/MyInvoices"
+        element={
+          <RequireAuth>
+            <MyInvoices />
+          </RequireAuth>
+        }
+      />
       <Route path="/details/:id" element={<Details />} />
     </Routes>
   );
