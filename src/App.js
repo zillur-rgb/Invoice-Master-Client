@@ -10,7 +10,7 @@ function App() {
       <Navbar />
       <AllPages />
       <Footer />
-      <ToastContainer></ToastContainer>
+      <ToastContainer autoClose={1000}></ToastContainer>
     </div>
   );
 }

@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 import { MdAddCircle } from "react-icons/md";
+import { Link } from "react-router-dom";
 import Invoices from "../Components/Invoices/Invoices";
 
 const MyInvoices = () => {
@@ -25,9 +26,11 @@ const MyInvoices = () => {
               You have currently {invoices.length} Invoices available
             </p>
           </div>
-          <button className="flex items-center py-10 px-50 rounded-full bg-btn text-primary text-textHeader font-bold hover:bg-lightGreen">
-            <MdAddCircle className=" text-4xl" /> Add New
-          </button>
+          <Link to="/addnew">
+            <button className="flex items-center py-10 px-50 rounded-full bg-btn text-primary text-textHeader font-bold hover:bg-lightGreen">
+              <MdAddCircle className=" text-4xl" /> Add New
+            </button>
+          </Link>
         </div>
 
         <table className="w-full">
