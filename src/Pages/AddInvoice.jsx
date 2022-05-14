@@ -1,14 +1,16 @@
-import userEvent from "@testing-library/user-event";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase.init";
 
 const AddInvoice = () => {
+  const navigate = useNavigate();
   const [user] = useAuthState(auth);
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
     console.log(data);
+    navigate("/myinvoices");
   };
   return (
     <div className="w-5/6 mx-auto">
@@ -17,8 +19,8 @@ const AddInvoice = () => {
           Add Your Invoice Here
         </h1>
         <form className=" w-4/5 mx-auto" onSubmit={handleSubmit(onSubmit)}>
-          <div className="flex items-center justify-between gap-5">
-            <div className="flex items-start justify-between flex-col w-1/2">
+          <div className="flex sm:flex-row flex-col items-center justify-between gap-5">
+            <div className="flex items-start justify-between flex-col w-full sm:w-1/2">
               <label
                 htmlFor="clientName"
                 className="text-text text-lg font-medium w-full my-2"
@@ -32,7 +34,7 @@ const AddInvoice = () => {
                 {...register("clientName")}
               />
             </div>
-            <div className="flex items-start justify-between flex-col w-1/2">
+            <div className="flex items-start justify-between flex-col w-full sm:w-1/2">
               <label
                 className="text-text text-lg font-medium w-full my-2"
                 htmlFor="clientEmail"
@@ -48,7 +50,7 @@ const AddInvoice = () => {
               />
             </div>
           </div>
-          <div>
+          <div className="my-3">
             <label
               className="text-text text-lg font-medium w-full my-2"
               htmlFor="streetName"
@@ -62,7 +64,7 @@ const AddInvoice = () => {
               {...register("streetName")}
             />
           </div>
-          <div>
+          <div className="flex flex-col sm:flex-row gap-3">
             <div className="my-3">
               <label
                 className="text-text text-lg font-medium w-full my-2"
@@ -121,36 +123,40 @@ const AddInvoice = () => {
               {...register("ProjectDes")}
             />
           </div>
-          <div className="my-3">
-            <label
-              className="text-text text-lg font-medium w-full my-2"
-              htmlFor="Price"
-            >
-              Price
-            </label>
-            <input
-              className="w-full border outline-btnGreen px-15 py-10 border-text text-text"
-              placeholder="Price"
-              id="Price"
-              {...register("Price")}
-            />
+
+          <div className="flex flex-col sm:flex-row justify-between gap-5">
+            <div className="my-3 w-full sm:w-1/2">
+              <label
+                className="text-text text-lg font-medium w-full my-2"
+                htmlFor="Price"
+              >
+                Price
+              </label>
+              <input
+                className="w-full border outline-btnGreen px-15 py-10 border-text text-text"
+                placeholder="Price"
+                id="Price"
+                {...register("Price")}
+              />
+            </div>
+
+            <div className="my-3 w-full sm:w-1/2">
+              <label
+                className="text-text text-lg font-medium w-full my-2"
+                htmlFor="due"
+              >
+                Due Date
+              </label>
+              <input
+                className="w-full border outline-btnGreen px-15 py-10 border-text text-text"
+                type="date"
+                placeholder="Due Date"
+                id="due"
+                {...register("due")}
+              />
+            </div>
           </div>
 
-          <div className="my-3">
-            <label
-              className="text-text text-lg font-medium w-full my-2"
-              htmlFor="due"
-            >
-              Due Date
-            </label>
-            <input
-              className="w-full border outline-btnGreen px-15 py-10 border-text text-text"
-              type="date"
-              placeholder="Due Date"
-              id="due"
-              {...register("due")}
-            />
-          </div>
           <div className="my-3">
             <label
               className="text-text text-lg font-medium w-full my-2"

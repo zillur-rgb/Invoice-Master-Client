@@ -1,19 +1,20 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
 
 import { MdAddCircle } from "react-icons/md";
 import { Link } from "react-router-dom";
 import Invoices from "../Components/Invoices/Invoices";
+import InvoiceContext from "../InvoiceContext/InvoiceContext";
 
 const MyInvoices = () => {
-  const [invoices, setInvoices] = useState([]);
-  console.log(invoices);
+  // const [invoices, setInvoices] = useState([]);
+  // console.log(invoices);
+  const { invoices } = useContext(InvoiceContext);
 
-  useEffect(() => {
-    axios.get("http://localhost:5000/api/invoices").then((res) => {
-      setInvoices(res.data);
-    });
-  }, []);
+  // useEffect(() => {
+  //   axios.get("http://localhost:5000/api/invoices").then((res) => {
+  //     setInvoices(res.data);
+  //   });
+  // }, []);
   return (
     <div className="w-5/6 mx-auto my-100">
       <div className="w-5/6 mx-auto">
