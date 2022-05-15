@@ -1,23 +1,43 @@
+import { useContext } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../firebase.init";
+import InvoiceContext from "../../InvoiceContext/InvoiceContext";
 
 const InvoiceForm = () => {
   const navigate = useNavigate();
   const [user] = useAuthState(auth);
+  const { addNewInvoice } = useContext(InvoiceContext);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => {
-    const today = new Date().getDate();
+  const onSubmit = (data, e) => {
+    const date = new Date();
+    const day = date.getUTCDate();
+    const month = date.getUTCMonth() + 1;
+    const year = date.getUTCFullYear();
+    const newDate = year + "-" + "0" + month + "-" + day;
+    console.log(data.due > newDate);
+    const newInvoice = {
+      clientName: data.clientName,
+      clientEmail: data.clientEmail,
+      streetName: data.streetName,
+      city: data.city,
+      postcode: data.postcode,
+      country: data.country,
+      projectDes: data.projectDes,
+      price: data.price,
+      date: newDate,
+      due: data.due,
+    };
 
-    const isTrue = data.due === "2022-05-12";
-    console.log(data.due);
-    console.log(isTrue);
+    addNewInvoice(newInvoice);
+
     navigate("/myinvoices");
+    e.target.reset();
   };
   return (
     <form className=" w-4/5 mx-auto" onSubmit={handleSubmit(onSubmit)}>
@@ -90,7 +110,7 @@ const InvoiceForm = () => {
         <div className="my-3">
           <label
             className="text-text text-lg font-medium w-full my-2"
-            htmlFor="Postcode"
+            htmlFor="postcode"
           >
             Postcode
           </label>
@@ -98,14 +118,14 @@ const InvoiceForm = () => {
             className="w-full border outline-btnGreen px-15 py-10 border-text text-text"
             type="number"
             placeholder="Postcode"
-            id="Postcode"
-            {...register("Postcode")}
+            id="postcode"
+            {...register("postcode")}
           />
         </div>
         <div className="my-3">
           <label
             className="text-text text-lg font-medium w-full my-2"
-            htmlFor="Country"
+            htmlFor="country"
           >
             Country
           </label>
@@ -148,6 +168,7 @@ const InvoiceForm = () => {
           <input
             className="w-full border outline-btnGreen px-15 py-10 border-text text-text"
             placeholder="Price"
+            type="number"
             id="price"
             {...register("price", { required: true })}
           />
@@ -171,10 +192,10 @@ const InvoiceForm = () => {
             {...register("due")}
           />
           {errors.projectDes?.type === "required" && (
-          <p className="text-red font-medium">
-            Project Description is required
-          </p>
-        )}
+            <p className="text-red font-medium">
+              Project Description is required
+            </p>
+          )}
         </div>
       </div>
 

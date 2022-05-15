@@ -13,10 +13,14 @@ export function InvoiceProvider({ children }) {
     });
   }, []);
 
-  
+  const addNewInvoice = (newInvoice) => {
+    axios.post("http://localhost:5000/api/invoices", newInvoice).then((res) => {
+      setInvoices(invoices.concat(res.data));
+    });
+  };
 
   return (
-    <InvoiceContext.Provider value={{ invoices, setInvoices }}>
+    <InvoiceContext.Provider value={{ invoices, setInvoices, addNewInvoice }}>
       {children}
     </InvoiceContext.Provider>
   );
