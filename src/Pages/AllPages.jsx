@@ -9,6 +9,7 @@ import MyInvoices from "./MyInvoices";
 import Details from "./Details";
 import RequireAuth from "../Components/RequireAuth/RequireAuth";
 import AddInvoice from "./AddInvoice";
+import EditInvoice from "./EditInvoice";
 
 const AllPages = () => {
   return (
@@ -19,6 +20,7 @@ const AllPages = () => {
       <Route path="/pricing" element={<PricingPage />} />
       <Route path="/signin" element={<Authentication />} />
       <Route path="/addnew" element={<AddInvoice />} />
+      <Route path="/editinvoice/:inId" element={<EditInvoice />} />
       <Route
         path="/MyInvoices"
         element={
