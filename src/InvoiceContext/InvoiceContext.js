@@ -13,6 +13,8 @@ export function InvoiceProvider({ children }) {
     });
   }, []);
 
+  
+
   return (
     <InvoiceContext.Provider value={{ invoices, setInvoices }}>
       {children}
