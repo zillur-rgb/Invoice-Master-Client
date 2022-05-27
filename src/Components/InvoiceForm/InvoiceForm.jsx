@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +8,7 @@ import InvoiceContext from "../../InvoiceContext/InvoiceContext";
 const InvoiceForm = () => {
   const navigate = useNavigate();
   const [user] = useAuthState(auth);
+  const [owner, setOwner] = useState(user?.email);
   const { addNewInvoice } = useContext(InvoiceContext);
   const {
     register,
@@ -32,6 +33,7 @@ const InvoiceForm = () => {
       price: data.price,
       date: newDate,
       due: data.due,
+      ownerEmail: owner,
     };
 
     addNewInvoice(newInvoice);

@@ -1,20 +1,29 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import { MdAddCircle } from "react-icons/md";
 import { Link } from "react-router-dom";
 import Invoices from "../Components/Invoices/Invoices";
 import InvoiceContext from "../InvoiceContext/InvoiceContext";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../firebase.init";
+import axios from "axios";
 
 const MyInvoices = () => {
-  // const [invoices, setInvoices] = useState([]);
-  // console.log(invoices);
-  const { invoices } = useContext(InvoiceContext);
+  const [invoices, setInvoices] = useState([]);
 
-  // useEffect(() => {
-  //   axios.get("http://localhost:5000/api/invoices").then((res) => {
-  //     setInvoices(res.data);
-  //   });
-  // }, []);
+  const [user, loading] = useAuthState(auth);
+  useEffect(() => {
+    axios.get(`http://localhost:5000/api/invoices`).then((res) => {
+      setInvoices(res.data);
+    });
+  }, [user]);
+  if (loading) {
+    return <h1>Loading.. Please Wait...</h1>;
+  }
+  const exact = invoices.filter(
+    (invoice) => invoice.ownerEmail === user?.email
+  );
+
   return (
     <div className="w-5/6 mx-auto my-100">
       <div className="w-5/6 mx-auto">
@@ -24,7 +33,7 @@ const MyInvoices = () => {
               Invoices
             </h1>
             <p className="text-text my-15">
-              You have currently {invoices.length} Invoices available
+              You have currently {exact.length} Invoices available
             </p>
           </div>
           <Link to="/addnew">
@@ -47,8 +56,8 @@ const MyInvoices = () => {
           </thead>
 
           <tbody>
-            {invoices.map((invoice) => (
-              <Invoices invoice={invoice} key={invoice.id} />
+            {exact.map((ex) => (
+              <Invoices invoice={ex} key={ex.id} />
             ))}
           </tbody>
         </table>
