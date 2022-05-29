@@ -25,7 +25,7 @@ const RequireAuth = ({ children }) => {
   const location = useLocation();
 
   if (loading) {
-    return toast("Loading user info");
+    return <h1>Loading... Please Wait...</h1>;
   }
   if (!user) {
     return <Navigate to="/signin" state={{ from: location }} replace />;

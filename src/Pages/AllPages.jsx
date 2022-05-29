@@ -10,6 +10,7 @@ import Details from "./Details";
 import RequireAuth from "../Components/RequireAuth/RequireAuth";
 import AddInvoice from "./AddInvoice";
 import EditInvoice from "./EditInvoice";
+import Payment from "./Payment";
 
 const AllPages = () => {
   return (
@@ -30,6 +31,14 @@ const AllPages = () => {
         }
       />
       <Route path="/details/:id" element={<Details />} />
+      <Route
+        path="/payment/:priceid"
+        element={
+          <RequireAuth>
+            <Payment />
+          </RequireAuth>
+        }
+      />
     </Routes>
   );
 };

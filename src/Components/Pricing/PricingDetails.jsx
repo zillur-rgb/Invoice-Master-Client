@@ -5,6 +5,7 @@ const PricingDetails = () => {
   const navigate = useNavigate();
   const pricing = [
     {
+      id: 0,
       title: "Personal",
       price: 0,
       allowed: [
@@ -19,6 +20,7 @@ const PricingDetails = () => {
       ],
     },
     {
+      id: 1,
       title: "Professional",
       price: 15,
       allowed: [
@@ -31,6 +33,7 @@ const PricingDetails = () => {
       notAllowed: ["Send Client Invocie Via Email"],
     },
     {
+      id: 2,
       title: "Business",
       price: 45,
       allowed: [
@@ -79,7 +82,7 @@ const PricingDetails = () => {
             </p>
           </div>
           <button
-            onClick={() => navigate("/signin")}
+            onClick={() => navigate(`/payment/${price?.title}`)}
             className=" whitespace-nowrap flex text-normal px-30 py-10 border-2 border-primary hover:text-white text-primary bg-none hover:bg-primary rounded-full mx-auto"
           >
             Get Started

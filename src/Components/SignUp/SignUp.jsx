@@ -19,7 +19,7 @@ const SignUp = () => {
   }
 
   if (loading || updating) {
-    toast("Lading, please wait");
+    toast("Loading, please wait");
   }
 
   if (user) {

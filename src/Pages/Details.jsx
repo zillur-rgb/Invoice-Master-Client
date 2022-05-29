@@ -12,9 +12,13 @@ const Details = () => {
   // console.log(details);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/invoices/${params.id}`).then((res) => {
-      setDetails(res.data);
-    });
+    axios
+      .get(
+        `https://shielded-taiga-84182.herokuapp.com/api/invoices/${params.id}`
+      )
+      .then((res) => {
+        setDetails(res.data);
+      });
   }, [params.id]);
 
   const statusStyle =
