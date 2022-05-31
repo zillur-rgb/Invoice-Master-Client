@@ -9,16 +9,12 @@ const Details = () => {
   const { invoices, updateInvoice } = useContext(InvoiceContext);
   const params = useParams();
   const [details, setDetails] = useState({});
-  // console.log(details);
+  console.log(details);
 
   useEffect(() => {
-    axios
-      .get(
-        `https://shielded-taiga-84182.herokuapp.com/api/invoices/${params.id}`
-      )
-      .then((res) => {
-        setDetails(res.data);
-      });
+    axios.get(`http://localhost:5000/api/invoices/${params.id}`).then((res) => {
+      setDetails(res.data);
+    });
   }, [params.id]);
 
   const statusStyle =
@@ -37,6 +33,13 @@ const Details = () => {
     updateInvoice(updatedInvoice, id);
   };
 
+  const handleDelete = (id) => {
+    axios.delete(`http://localhost:5000/api/invoices/${id}`).then(() => {
+      invoices.filter((invoice) => invoice.id !== id);
+      navigate("/myinvoices");
+    });
+  };
+
   return (
     <div className="w-3/5 mx-auto my-100">
       <div className="header flex flex-col md:flex-row items-center justify-between px-20 py-40 bg-bg rounded-lg">
@@ -50,12 +53,21 @@ const Details = () => {
               Edit
             </button>
           </Link>
-          <button
-            onClick={() => handleIfPaid(details.id)}
-            className="px-30 rounded-full text-white font-bold hover:bg-lightGreen hover:text-btnGreen py-3 bg-primary mx-10"
-          >
-            Mark as Paid
-          </button>
+          {details?.status !== "Paid" ? (
+            <button
+              onClick={() => handleIfPaid(details.id)}
+              className="px-30 rounded-full text-white font-bold hover:bg-lightGreen hover:text-btnGreen py-3 bg-primary mx-10"
+            >
+              Mark as Paid
+            </button>
+          ) : (
+            <button
+              onClick={() => handleDelete(details.id)}
+              className="px-30 rounded-full text-white font-bold hover:bg-redLight hover:text-red py-3 bg-red  mx-10"
+            >
+              Delete Invoice
+            </button>
+          )}
         </div>
       </div>
       <InvoiceCard details={details} />

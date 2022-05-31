@@ -13,11 +13,9 @@ const MyInvoices = () => {
 
   const [user, loading] = useAuthState(auth);
   useEffect(() => {
-    axios
-      .get(`https://shielded-taiga-84182.herokuapp.com/api/invoices`)
-      .then((res) => {
-        setInvoices(res.data);
-      });
+    axios.get(`http://localhost:5000/api/invoices`).then((res) => {
+      setInvoices(res.data);
+    });
   }, [user]);
   if (loading) {
     return <h1>Loading.. Please Wait...</h1>;
