@@ -11,6 +11,9 @@ const Details = () => {
   const [details, setDetails] = useState({});
   console.log(details);
 
+  const exact = invoices.find((invoice) => invoice.id === params.id);
+
+  console.log(exact);
   useEffect(() => {
     axios.get(`http://localhost:5000/api/invoices/${params.id}`).then((res) => {
       setDetails(res.data);
@@ -45,24 +48,24 @@ const Details = () => {
       <div className="header flex flex-col md:flex-row items-center justify-between px-20 py-40 bg-bg rounded-lg">
         <div className="flex items-center">
           <h1 className="text-4xl text-primary font-semibold mr-20">Details</h1>
-          <p className={statusStyle}>{details.status}</p>
+          <p className={statusStyle}>{exact.status}</p>
         </div>
         <div>
-          <Link to={`/editinvoice/${details.id}`}>
+          <Link to={`/editinvoice/${exact.id}`}>
             <button className="px-60 rounded-full text-white font-bold hover:bg-yellowLight hover:text-yellow py-3 bg-yellow mx-10">
               Edit
             </button>
           </Link>
-          {details?.status !== "Paid" ? (
+          {exact?.status !== "Paid" ? (
             <button
-              onClick={() => handleIfPaid(details.id)}
+              onClick={() => handleIfPaid(exact.id)}
               className="px-30 rounded-full text-white font-bold hover:bg-lightGreen hover:text-btnGreen py-3 bg-primary mx-10"
             >
               Mark as Paid
             </button>
           ) : (
             <button
-              onClick={() => handleDelete(details.id)}
+              onClick={() => handleDelete(exact.id)}
               className="px-30 rounded-full text-white font-bold hover:bg-redLight hover:text-red py-3 bg-red  mx-10"
             >
               Delete Invoice
