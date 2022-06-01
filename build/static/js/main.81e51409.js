@@ -28175,7 +28175,7 @@
         o.data, o.setData;
         (0, e.useEffect)(function () {
           wl()
-            .get("http://localhost:5000/api/invoices")
+            .get("https://powerful-waters-55190.herokuapp.com/api/invoices")
             .then(function (e) {
               i(e.data);
             });
@@ -28189,7 +28189,12 @@
                 return e.id === t;
               });
               wl()
-                .put("http://localhost:5000/api/invoices/".concat(t), e)
+                .put(
+                  "https://powerful-waters-55190.herokuapp.com/api/invoices/".concat(
+                    t
+                  ),
+                  e
+                )
                 .then(function (e) {
                   i(
                     a.map(function (n) {
@@ -28203,7 +28208,10 @@
             },
             addNewInvoice: function (e) {
               wl()
-                .post("http://localhost:5000/api/invoices", e)
+                .post(
+                  "https://powerful-waters-55190.herokuapp.com/api/invoices",
+                  e
+                )
                 .then(function (e) {
                   i(a.concat(e.data));
                 });
@@ -28224,7 +28232,9 @@
             ((0, e.useEffect)(
               function () {
                 wl()
-                  .get("http://localhost:5000/api/invoices")
+                  .get(
+                    "https://powerful-waters-55190.herokuapp.com/api/invoices"
+                  )
                   .then(function (e) {
                     r(e.data);
                   });
@@ -28423,7 +28433,11 @@
           (0, e.useEffect)(
             function () {
               wl()
-                .get("http://localhost:5000/api/invoices/".concat(a.id))
+                .get(
+                  "https://powerful-waters-55190.herokuapp.com/api/invoices/".concat(
+                    a.id
+                  )
+                )
                 .then(function (e) {
                   u(e.data);
                 });

@@ -15,9 +15,13 @@ const Details = () => {
 
   console.log(exact);
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/invoices/${params.id}`).then((res) => {
-      setDetails(res.data);
-    });
+    axios
+      .get(
+        `https://powerful-waters-55190.herokuapp.com/api/invoices/${params.id}`
+      )
+      .then((res) => {
+        setDetails(res.data);
+      });
   }, [params.id]);
 
   const statusStyle =
@@ -37,10 +41,12 @@ const Details = () => {
   };
 
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:5000/api/invoices/${id}`).then(() => {
-      invoices.filter((invoice) => invoice.id !== id);
-      navigate("/myinvoices");
-    });
+    axios
+      .delete(`https://powerful-waters-55190.herokuapp.com/api/invoices/${id}`)
+      .then(() => {
+        invoices.filter((invoice) => invoice.id !== id);
+        navigate("/myinvoices");
+      });
   };
 
   return (

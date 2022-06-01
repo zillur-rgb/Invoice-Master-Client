@@ -13,9 +13,11 @@ const MyInvoices = () => {
 
   const [user, loading] = useAuthState(auth);
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/invoices`).then((res) => {
-      setInvoices(res.data);
-    });
+    axios
+      .get(`https://powerful-waters-55190.herokuapp.com/api/invoices`)
+      .then((res) => {
+        setInvoices(res.data);
+      });
   }, [user]);
   if (loading) {
     return <h1>Loading.. Please Wait...</h1>;
